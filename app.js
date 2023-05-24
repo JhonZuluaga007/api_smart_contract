@@ -1,27 +1,26 @@
-const express = require('express')
+const express = require('express');
+const ethers = require("ethers");
 const app = express()
 const port = 3000
 const contractABI = require("./contract/NFTDegree.json");
 const DEPLOYER_SIGNER_PRIVATE_KEY = process.env.DEPLOYER_SIGNER_PRIVATE_KEY
 const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID
-const ADDRESS_CONTRACT = process.env.ADDRESS_CONTRACT
-const WALLET_ADDRESS = process.env.WALLET_ADDRESS
+const ADDRESS_CONTRACT = '0x6fE80DBe5A432a251CC1d078Cf12F4b6323ee8AA'
+const WALLET_ADDRESS = '0x47798985fD1Bcbf43c8a430cAe2160A3350e3C72'
 const GAS_LIMIT = process.env.GAS_LIMIT
 const GAS = process.env.GAS
-const BLOCKCHAIN = process.env.BLOCKCHAIN
-const URL_BLOCKCHAIN = process.env.URL_BLOCKCHAIN
+const BLOCKCHAIN = 'goerli'
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
-  mintear(add_owner, _tokenId, name, metadataURI)
+  mintear('add_owner', '_tokenId', 'nameNft', 'metadataURI')
 })
 
 
-async function mintear(objeto) {
-  console.log(JSON.parse(objeto.body));
-  const message = JSON.parse(objeto.body);
+async function mintear(addOwner, _tokenId, nameNft, metadataURI) {
   return new Promise(async (resolve, reject) => {
     try {
+        console.log('entro------');
       providerEther = new ethers.getDefaultProvider(BLOCKCHAIN, {
         infura: INFURA_PROJECT_ID,
       });
@@ -52,7 +51,6 @@ async function mintear(objeto) {
       console.log('Error-> api-deathFlowMint006');
       console.log(error);
       console.log('---------------------------------------');
-      await updateStatusFailMessage(message, 0, error);
     }
   });
 }
