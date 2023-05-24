@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const contractABI = require("./contract/NFTDegree.json");
 const DEPLOYER_SIGNER_PRIVATE_KEY = process.env.DEPLOYER_SIGNER_PRIVATE_KEY
 const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID
 const ADDRESS_CONTRACT = process.env.ADDRESS_CONTRACT
