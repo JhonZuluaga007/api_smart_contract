@@ -6,10 +6,15 @@ import getNFT from "./get-nft.routes.js";
 const router = express.Router();
 console.log("index.routes.js");
 router.post("/mint", async (req, res) => {
-  console.log("routes.index.post");
-  const {add_owner, _tokenId, nameNft, metadataURI} = req.body
-  const response = await mintNFT(add_owner, _tokenId, nameNft, metadataURI);
-  return res.json(response);
+  try {
+    console.log("routes.index.post");
+    const { add_owner, _tokenId, nameNft, metadataURI } = req.body;
+    const response = await mintNFT(add_owner, _tokenId, nameNft, metadataURI);
+    return res.json(response);
+  } catch (error) {
+    console.error("index.routs.mint error:", error);
+    return res.json({ error });
+  }
 });
 router.get("/get", async (req, res) => {
   console.log("routes.index.get");
