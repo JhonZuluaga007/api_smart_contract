@@ -24,7 +24,7 @@ const mintNftServices = async (add_owner, _tokenId, nameNft, metadataURI) => {
     console.log(signer);
     const contractNFTs = new ethers.Contract(
       process.env.ADDRESS_CONTRACT,
-      contractABI.abi,
+      contractABI,
       signer
     );
     console.log("se intancia el contrato");
