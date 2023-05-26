@@ -30,10 +30,6 @@ const mintNftServices = async (add_owner, _tokenId, nameNft, metadataURI) => {
     console.log("se intancia el contrato");
     console.log("---------------------------------------");
 
-    // console.log(contractNFTs);
-    // const statusNft = message.isNfts;
-    // console.log("Estado del nfts: ", statusNft);
-    // console.log("---------------------------------------");
     console.log("---------------------------------------");
     console.log("Gas limit : ", process.env.GAS_LIMIT);
     console.log("---------------------------------------");
@@ -74,9 +70,6 @@ async function initMint(
 
       console.log("mint.services.initMint gascurrenttemp: ", gascurrenttemp);
       console.log("mint.services.initMint gascurrent: ", gascurrent);
-
-      // const idTokenNFT = await contractNFT.tokenCount();
-      // console.log("mint.services.initMint idTokenNFT: ", idTokenNFT);
       let transaction = await contractNFT.createNFT(
         add_owner,
         _tokenId,
