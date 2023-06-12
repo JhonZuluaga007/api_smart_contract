@@ -8,8 +8,13 @@ console.log("index.routes.js");
 router.post("/mint", async (req, res) => {
   try {
     console.log("routes.index.post");
-    const { add_owner, _tokenId, nameNft, metadataURI } = req.body;
-    const response = await mintNFT(add_owner, _tokenId, nameNft, metadataURI);
+    const { add_owner, tokenId, nameNft, metadataURI } = req.body;
+    console.log("routes.index.post add_owner: ", add_owner);
+    console.log("routes.index.post tokenId: ", tokenId);
+    console.log("routes.index.post nameNft: ", nameNft);
+    console.log("routes.index.post metadataURI: ", metadataURI);
+
+    const response = await mintNFT(add_owner, tokenId, nameNft, metadataURI);
     return res.json(response);
   } catch (error) {
     console.error("index.routs.mint error:", error);

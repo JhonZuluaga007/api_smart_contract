@@ -7,8 +7,10 @@ dotenv.config();
 
 const mintNftServices = async (add_owner, tokenId, nameNft, metadataURI) => {
   try {
-    let providerEther = new ethers.getDefaultProvider(process.env.INFURA_PROJECT_ID);
-    
+    let providerEther = new ethers.getDefaultProvider(
+      process.env.INFURA_PROJECT_ID
+    );
+
     const signer = new ethers.Wallet(
       process.env.PRIVATE_KEY_WALLET,
       providerEther
@@ -32,25 +34,18 @@ const mintNftServices = async (add_owner, tokenId, nameNft, metadataURI) => {
   }
 };
 
-async function initMint(
-  contractNFT,
-  add_owner,
-  tokenId,
-  nameNft,
-  metadataURI
-) {
+async function initMint(contractNFT, add_owner, tokenId, nameNft, metadataURI) {
   try {
-    console.log('add_owner: '+add_owner);
-    console.log('tokenId: '+tokenId);
-    console.log('nameNft: '+nameNft);
-    console.log('metadataURI: '+metadataURI);
-
+    console.log("add_owner: " + add_owner);
+    console.log("tokenId: " + tokenId);
+    console.log("nameNft: " + nameNft);
+    console.log("metadataURI: " + metadataURI);
 
     let transaction = await contractNFT.createNFT(
       add_owner,
-      9, // TODO: este es un valor incremental, no se puede repetir
+      tokenId, // TODO: este es un valor incremental, no se puede repetir
       nameNft,
-      metadataURI,
+      metadataURI
     );
     console.log("--------------Se guarda transaccion----------------");
     let tx = transaction;
